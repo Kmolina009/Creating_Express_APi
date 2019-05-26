@@ -5,7 +5,8 @@ module.exports = {
   index,
   show,
   new: newMovie,
-  create
+  create,
+  deleteOne
 };
 
 function index(req, res) {
@@ -44,4 +45,9 @@ function create(req, res) {
     // res.redirect('/movies');
     res.redirect(`/movies/${movie._id}`);
   });
+}
+function deleteOne(req, res){
+  Movie.deleteMany({}, function (err){
+    if(err)  return handleError (err)
+  })
 }
